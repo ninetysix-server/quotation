@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/icon.svg">
+    <title>Quotation document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ms-blue: #004370;
+            --ms-blue-dark: #009B5B;
+            --ms-blue-light: #e3f2fd;
+            --ms-gray: #f3f2f1;
+            --ms-gray-dark: #8a8886;
+            --ms-text: #323130;
+            --ms-text-light: #605e5c;
+            --ms-border: #edebe9;
+            --ms-surface: #ffffff;
+        }
+        
+        body {
+            background-color: #faf9f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--ms-text);
+            padding: 0;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .ms-navbar {
+            background-color: var(--ms-surface);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 0 24px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .ms-logo {
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .ms-brand {
+            font-weight: 600;
+            color: var(--ms-text);
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .ms-surface {
+            background: var(--ms-surface);
+            box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02), 
+                        0 6.7px 5.3px rgba(0, 0, 0, 0.028), 
+                        0 12.5px 10px rgba(0, 0, 0, 0.035), 
+                        0 22.3px 17.9px rgba(0, 0, 0, 0.042), 
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.05), 
+                        0 100px 80px rgba(0, 0, 0, 0.07);
+            border-radius: 2px;
+            margin-bottom: 24px;
+            padding: 25px;
+        }
+        
+        .ms-divider {
+            height: 1px;
+            background-color: var(--ms-border);
+            margin: 18px 0;
+        }
+        
+        .ms-heading {
+            font-weight: 600;
+            color: var(--ms-text);
+            margin-bottom: 12px;
+        }
+        
+        .ms-heading-xl {
+            font-size: 22px;
+            font-weight: 300;
+        }
+        
+        .ms-heading-lg {
+            font-size: 18px;
+        }
+        
+        .ms-heading-md {
+            font-size: 16px;
+        }
+        
+        .ms-text-secondary {
+            color: var(--ms-text-light);
+            font-size: 13px;
+        }
+        
+        .ms-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 18px;
+        }
+        
+        .ms-grid-col-6 {
+            grid-column: span 6;
+        }
+        
+        .ms-grid-col-8 {
+            grid-column: span 8;
+        }
+        
+        .ms-grid-col-4 {
+            grid-column: span 4;
+        }
+        
+        .ms-info-card {
+            background: var(--ms-gray);
+            border-radius: 2px;
+            padding: 16px;
+            border-left: 4px solid var(--ms-blue);
+        }
+        
+        .ms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+        }
+        
+        .ms-table th {
+            text-align: left;
+            padding: 10px 8px;
+            font-weight: 600;
+            color: var(--ms-text);
+            border-bottom: 1px solid var(--ms-border);
+            background-color: var(--ms-gray);
+        }
+        
+        .ms-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid var(--ms-border);
+        }
+        
+        .ms-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .ms-table tfoot tr {
+            border-top: 2px solid var(--ms-border);
+        }
+        
+        .ms-table tfoot td {
+            padding-top: 15px;
+            font-weight: 600;
+        }
+        
+        .ms-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--ms-blue-light);
+            color: var(--ms-blue-dark);
+            border-radius: 2px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .ms-button {
+            background-color: var(--ms-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ms-button:hover {
+            background-color: var(--ms-blue-dark);
+        }
+        
+        .ms-button-secondary {
+            background-color: transparent;
+            color: var(--ms-blue);
+            border: 1px solid var(--ms-border);
+        }
+        
+        .ms-button-secondary:hover {
+            background-color: var(--ms-gray);
+        }
+        
+        .ms-button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .ms-text-right {
+            text-align: right;
+        }
+        
+        .ms-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .ms-status::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--ms-blue);
+        }
+        
+        .ms-alert {
+            padding: 14px;
+            background-color: var(--ms-blue-light);
+            border-radius: 2px;
+            margin: 18px 0;
+        }
+        
+        /* Form Styles */
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--ms-text);
+        }
+        
+        .form-control {
+            padding: 10px 12px;
+            border: 1px solid var(--ms-border);
+            border-radius: 2px;
+            background-color: var(--ms-surface);
+            color: var(--ms-text);
+            margin-bottom: 16px;
+            width: 100%;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ms-blue);
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+        }
+        
+        .required-field::after {
+            content: "*";
+            color: #d13438;
+            margin-left: 4px;
+        }
+        
+        .service-card {
+            border: 1px solid var(--ms-border);
+            border-radius: 2px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+        
+        .service-card:hover {
+            border-color: var(--ms-blue);
+            box-shadow: 0 0 0 1px var(--ms-blue);
+        }
+        
+        .service-card.selected {
+            border-color: var(--ms-blue);
+            background-color: var(--ms-blue-light);
+        }
+        
+        .service-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .service-description {
+            color: var(--ms-text-light);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .service-options {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .service-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .service-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quantity-input {
+            width: 70px;
+            padding: 6px;
+            border: 1px solid var(--ms-border);
+            border-radius: 2px;
+        }
+        
+        /* Navigation */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--ms-border);
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: var(--ms-gray);
+            color: var(--ms-text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 8px;
+            border: 2px solid var(--ms-gray);
+        }
+        
+        .step.active .step-number {
+            background-color: var(--ms-blue);
+            color: white;
+            border-color: var(--ms-blue);
+        }
+        
+        .step.completed .step-number {
+            background-color: var(--ms-blue-light);
+            color: var(--ms-blue);
+            border-color: var(--ms-blue);
+        }
+        
+        .step-label {
+            font-size: 13px;
+            color: var(--ms-text-light);
+        }
+        
+        .step.active .step-label {
+            color: var(--ms-blue);
+            font-weight: 600;
+        }
+        
+        /* Total Amount Popup */
+        .total-popup {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background-color: var(--ms-blue);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        
+        .total-popup.visible {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+            
+            body {
+                padding: 0;
+                margin: 0;
+                background: white;
+                font-size: 10pt;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .ms-surface {
+                box-shadow: none;
+                border: none;
+                padding: 0.5cm;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .ms-navbar,
+            .ms-button-group,
+            .no-print,
+            .form-step,
+            .total-popup {
+                display: none !important;
+            }
+            
+            .quotation-preview {
+                display: block !important;
+            }
+            
+            .ms-grid {
+                display: block;
+                gap: 12px;
+            }
+            
+            .ms-info-card {
+                margin-bottom: 12px;
+                page-break-inside: avoid;
+                padding: 12px;
+            }
+            
+            .ms-table {
+                font-size: 9pt;
+                width: 100%;
+                margin: 12px 0;
+            }
+            
+            .ms-table th,
+            .ms-table td {
+                padding: 6px 4px;
+            }
+            
+            .ms-divider {
+                margin: 12px 0;
+            }
+            
+            .ms-heading-xl {
+                font-size: 16pt;
+            }
+            
+            .ms-heading-lg {
+                font-size: 14pt;
+            }
+            
+            .ms-heading-md {
+                font-size: 12pt;
+            }
+            
+            .ms-alert {
+                padding: 10px;
+                margin: 12px 0;
+            }
+            
+            .from-billto-container {
+                display: flex !important;
+                justify-content: space-between;
+                gap: 15px;
+            }
+            
+            .from-billto-container > div {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            /* Compact layout for print */
+            .ms-grid-col-6, 
+            .ms-grid-col-8, 
+            .ms-grid-col-4 {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            
+            /* page breaks inside key elements */
+            .ms-info-card, 
+            .ms-alert,
+            table, 
+            tr, 
+            td, 
+            th {
+                page-break-inside: avoid;
+            }
+            
+            table {
+                page-break-inside: auto;
+            }
+            
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            
+            .ms-text-secondary {
+                font-size: 9pt;
+            }
+            
+            .ms-badge {
+                font-size: 9pt;
+                padding: 2px 6px;
+            }
+            
+            .ms-status {
+                font-size: 9pt;
+            }
+            
+            /* Footer adjustments */
+            .ms-text-secondary[style] {
+                font-size: 8pt !important;
+                margin-top: 10px;
+            }
+            @media print {
+        #step-4 { display: block !important; }
+        #quotation-preview { display: block !important; }
+        }
+
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .ms-grid-col-6, 
+            .ms-grid-col-8, 
+            .ms-grid-col-4 {
+                grid-column: span 12;
+            }
+            
+            .ms-surface {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .ms-button-group {
+                flex-direction: column;
+            }
+            
+            .ms-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .ms-navbar {
+                padding: 0 15px;
+            }
+            
+            .ms-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+            
+            .from-billto-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .service-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .total-popup {
+                top: 60px;
+                right: 10px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .ms-surface {
+                padding: 16px 12px;
+            }
+            
+            .ms-info-card {
+                padding: 12px;
+            }
+            
+            .ms-heading-xl {
+                font-size: 20px;
+            }
+            
+            .ms-heading-lg {
+                font-size: 17px;
+            }
+            
+            .ms-heading-md {
+                font-size: 15px;
+            }
+            
+            .ms-table th,
+            .ms-table td {
+                padding: 10px 6px;
+            }
+            
+            .ms-grid {
+                gap: 12px;
+            }
+            
+            .step-label {
+                font-size: 11px;
+            }
+        }
+        
+        /* Quotation Preview */
+        .quotation-preview {
+            display: none;
+        }
+        
+        /* Service selection checkbox */
+        .service-checkbox {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Pages input */
+        .pages-input-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .pages-input {
+            width: 80px;
+            padding: 6px;
+            border: 1px solid var(--ms-border);
+            border-radius: 2px;
+        }
+        
+        .pages-info {
+            font-size: 12px;
+            color: var(--ms-text-light);
+        }
+        
+        /* Error message */
+        .error-message {
+            color: #d13438;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        /* Customer ID prefix */
+        .input-prefix {
+            display: flex;
+            align-items: center;
+        }
+        
+        .prefix-text {
+            padding: 10px 0 10px 12px;
+            background-color: var(--ms-gray);
+            border: 1px solid var(--ms-border);
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+        }
+        
+        .prefix-input {
+            border-radius: 0 2px 2px 0;
+            flex: 1;
+        }
+
+        /* Desktop (default) */
+        .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        }
+
+        .logo-qr {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-align: right;
+        }
+
+        .logo {
+        height: 90px;
+        }
+
+        .qr-code {
+        height: 100px;
+        }
+
+        /* Mobile screens */
+        @media (max-width: 600px) {
+        .logo-qr {
+            flex-direction: column;     
+            align-items: flex-end;      
+            gap: 10px;
+        }
+
+        .logo {
+            height: 70px;
+        }
+
+        .qr-code {
+            display: none;
+        }
+        }
+    </style>
+
+        <style>
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .password-container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .quotation-header {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .quotation-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .quotation-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 25px 0;
+            background: #f8f9fa;
+        }
+        
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 24px;
+            color: #555;
+        }
+        
+        .password-form {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #4b6cb7;
+            outline: none;
+        }
+        
+        .password-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .password-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .whatsapp-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .password-container {
+                border-radius: 10px;
+            }
+            
+            .quotation-header {
+                padding: 20px;
+            }
+            
+            .payment-methods {
+                gap: 15px;
+            }
+            
+            .payment-icon {
+                width: 50px;
+                height: 35px;
+                font-size: 20px;
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .locked-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="password-container">
+            <div class="quotation-header">
+                <h1>Quotation System</h1>
+                <p>96 studios pricing information</p>
+            </div>
+            
+            <div class="password-form">
+                <div class="form-group">
+                    <label for="password">Enter Password to Access</label>
+                    <input type="password" id="password" placeholder="Enter your secure password">
+                </div>
+                
+                <button class="password-btn" id="request-btn">Request Password via WhatsApp</button>
+                <button class="password-btn" id="submit-btn" style="margin-top: 10px;">Submit Password</button>
+                
+                <div id="error-message" class="error-message">
+                    Invalid password. Please try again or request access via WhatsApp.
+                </div>
+                
+                <div id="success-message" class="success-message">
+                    Access granted! Redirecting to your quotation...
+                </div>
+                
+                <div class="whatsapp-info">
+                    <p>Don't have the password? Click the button above to request access via WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="locked-content hidden" id="mainContent">
+    <!-- Microsoft-style navigation bar -->
+    <div class="ms-navbar no-print">
+        <svg class="ms-logo" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+            <path d="M120 120H0V0h120v120zm120 0H120V0h120v120zm-120 120H0V120h120v120zm120 0H120V120h120v120z" fill="#0078d4"/>
+        </svg>
+        <span class="ms-brand">96 Studios Business Center</span>
+    </div>
+
+    <!-- Total Amount Popup -->
+    <div class="total-popup" id="total-popup">
+        Total: R0.00
+    </div>
+
+    <div class="container">
+        <!-- Step Indicator -->
+        <div class="ms-surface no-print">
+            <div class="step-indicator">
+                <div class="step active" id="step-1-indicator">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Select Services</div>
+                </div>
+                <div class="step" id="step-2-indicator">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Client Information</div>
+                </div>
+                <div class="step" id="step-3-indicator">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Apply Discount</div>
+                </div>
+                <div class="step" id="step-4-indicator">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Review & Print</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Service Selection -->
+        <div class="ms-surface form-step active" id="step-1">
+            <h2 class="ms-heading ms-heading-lg">Select Services</h2>
+            <p class="ms-text-secondary">Choose from our range of services and specify the package and quantity for each.</p>
+            
+            <div class="ms-divider"></div>
+            
+            <!-- Service List -->
+            <div id="service-list">
+                <!-- Our Services -->
+            </div>
+            
+            <div class="ms-button-group">
+                <button class="ms-button" id="step-1-next">
+                    Continue to Client Information <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Client Information -->
+        <div class="ms-surface form-step" id="step-2">
+            <h2 class="ms-heading ms-heading-lg">Client Information</h2>
+            <p class="ms-text-secondary">Please provide your company and contact details.</p>
+            
+            <div class="ms-divider"></div>
+            
+            <div class="ms-grid">
+                <div class="ms-grid-col-6">
+                    <label class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="company-name" placeholder="Enter company name">
+                </div>
+                <div class="ms-grid-col-6">
+                    <label class="form-label required-field">Full Name</label>
+                    <input type="text" class="form-control" id="full-name" placeholder="Enter full name">
+                </div>
+                <div class="ms-grid-col-6">
+                    <label class="form-label required-field">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter phone number">
+                </div>
+                <div class="ms-grid-col-6">
+                    <label class="form-label required-field">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email address">
+                </div>
+                <div class="ms-grid-col-8">
+                    <label class="form-label required-field">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter street address">
+                </div>
+                <div class="ms-grid-col-4">
+                    <label class="form-label required-field">Zip Code</label>
+                    <input type="text" class="form-control" id="zip-code" placeholder="Enter zip code">
+                </div>
+            </div>
+            
+            <div class="ms-button-group">
+                <button class="ms-button ms-button-secondary" id="step-2-back">
+                    <i class="fas fa-arrow-left"></i> Back to Services
+                </button>
+                <button class="ms-button" id="step-2-next">
+                    Continue to Discount <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Discount Application -->
+        <div class="ms-surface form-step" id="step-3">
+            <h2 class="ms-heading ms-heading-lg">Apply Discount</h2>
+            <p class="ms-text-secondary">Enter your customer ID to apply eligible discounts to your quotation.</p>
+            
+            <div class="ms-divider"></div>
+            
+            <div class="ms-grid">
+                <div class="ms-grid-col-6">
+                    <label class="form-label">Customer ID</label>
+                    <div class="input-prefix">
+                        <span class="prefix-text">96-</span>
+                        <input type="text" class="form-control prefix-input" id="customer-id" placeholder="XXXXXX" maxlength="6">
+                    </div>
+                    <p class="ms-text-secondary">Enter your 6-digit customer ID (after "96-")</p>
+                    <div class="error-message" id="customer-id-error"></div>
+                </div>
+                <div class="ms-grid-col-6">
+                    <div class="ms-info-card">
+                        <h3 class="ms-heading ms-heading-md">Discount Information</h3>
+                        <p id="discount-info">No discount applied yet. Enter your customer ID to see applicable discounts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ms-divider"></div>
+            
+            <h3 class="ms-heading ms-heading-md">Order Summary</h3>
+            <table class="ms-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Package</th>
+                        <th>Quantity</th>
+                        <th>Pages</th>
+                        <th class="ms-text-right">Price</th>
+                    </tr>
+                </thead>
+                <tbody id="order-summary">
+                    <!-- Our Order items -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="ms-text-right">Subtotal:</td>
+                        <td class="ms-text-right" id="subtotal">R0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="ms-text-right">Discount:</td>
+                        <td class="ms-text-right" id="discount-amount">-R0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="ms-text-right"><strong>Total:</strong></td>
+                        <td class="ms-text-right"><strong id="total-amount">R0.00</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <div class="ms-button-group">
+                <button class="ms-button ms-button-secondary" id="step-3-back">
+                    <i class="fas fa-arrow-left"></i> Back to Client Info
+                </button>
+                <button class="ms-button" id="step-3-next">
+                    Generate Quotation <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+        
+     <div class="ms-surface form-step" id="step-4">
+  <div class="preview-header">
+    <div>
+      <h2 class="ms-heading ms-heading-lg">Quotation Preview</h2>
+      <p class="ms-text-secondary">Review your quotation below. You can print or download it as a PDF.</p>
+    </div>
+
+    <!-- Logo + QR Code -->
+    <div class="logo-qr">
+      <img src="/96studios-logo-project-01.svg" alt="Company Logo" class="logo">
+      <img src="/96stuidosQRcode.svg" alt="QR Code" class="qr-code">
+    </div>
+  </div>
+
+    
+    <div class="ms-divider"></div>
+    
+    <div class="ms-button-group no-print">
+        <button class="ms-button ms-button-secondary" id="step-4-back">
+            <i class="fas fa-arrow-left"></i> Back to Discount
+        </button>
+        <button class="ms-button" id="print-button">
+            <i class="fas fa-print"></i> Print Quotation
+        </button>
+        <button class="ms-button ms-button-secondary" id="download-pdf">
+            <i class="fas fa-download"></i> Download PDF
+        </button>
+    </div>
+    
+    <!-- Quotation Preview -->
+    <div class="quotation-preview" id="quotation-preview">
+        <!-- Our Quotation content -->
+    </div>
+</div>
+
+</div>
+    <script>
+        // Service data
+        const services = [
+            {
+                id: 1,
+                name: "Logo Design",
+                description: "Professional logo creation to establish your brand's visual identity and make a memorable first impression.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+            // Poster Design
+            {
+                id: 2,
+                name: "Poster Design",
+                description: "Eye-catching and impactful poster designs for events, promotions, or announcements.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Flyer Design
+            {
+                id: 3,
+                name: "Flyer Design",
+                description: "Effective and distributable flyer designs to promote your business, event, or service directly to your audience.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+
+            // Brochure Design
+            {
+                id: 4,
+                name: "Brochure Design",
+                description: "Informative and visually appealing brochure layouts to showcase your products, services, or company details.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 400 },
+                    { name: "Premium", price: 800 },
+                    { name: "Pro", price: 1200 }
+                ]
+            },
+
+            // Banner Design
+            {
+                id: 5,
+                name: "Banner Design",
+                description: "Custom digital or print banner designs for websites, social media, or physical displays.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 400 },
+                    { name: "Premium", price: 800 },
+                    { name: "Pro", price: 1200 }
+                ]
+            },
+
+            // Business Card Design
+            {
+                id: 6,
+                name: "Business Card Design",
+                description: "Professional and memorable business card design that encapsulates your brand for powerful networking.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Product Advert Design
+            {
+                id: 7,
+                name: "Product Advert Design",
+                description: "Compelling advertisement designs tailored to highlight your product's features and drive sales.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+
+            // Calendar Design
+            {
+                id: 8,
+                name: "Calendar Design",
+                description: "Customizable calendar designs perfect for brand promotion, gifts, or organizational use.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Letterhead Design
+            {
+                id: 9,
+                name: "Letterhead Design",
+                description: "Elegant and branded stationery design for official correspondence, enhancing your professional image.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+            // Menu Design
+            {
+                id: 10,
+                name: "Menu Design",
+                description: "Appetizing and easy-to-navigate menu designs for restaurants and eateries, from single-page to multi-page layouts.",
+                hasPages: true,
+                packages: [
+                    { name: "Standard", price: 300, includedPages: 1, pagePrice: 200, maxPages: 10 }
+                ]
+            },
+            // CD Art Cover Design
+            {
+                id: 11,
+                name: "CD Art Cover Design",
+                description: "Creative and engaging cover art and packaging design for music albums, software, or media products.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Sign Design
+            {
+                id: 12,
+                name: "Sign Design",
+                description: "Clear and effective sign designs for retail, offices, or directional purposes to attract and inform.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+            // Book Cover Design
+            {
+                id: 13,
+                name: "Book Cover Design",
+                description: "Captivating cover design that sells your book, with options for full wrap-around cover and interior layout design.",
+                hasPages: true,
+                packages: [
+                    { name: "Standard", price: 200, includedPages: 1, pagePrice: 100, maxPages: 50 }
+                ]
+            },
+
+            // Board Design
+            {
+                id: 14,
+                name: "Board Design",
+                description: "Strategic and visually strong designs for presentation boards, whiteboards, or informational displays.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 1200 }
+                ]
+            },
+
+            // Invitation Card Design
+            {
+                id: 15,
+                name: "Invitation Card Design",
+                description: "Beautifully crafted invitation designs for weddings, corporate events, or special occasions.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Membership Card Design
+            {
+                id: 16,
+                name: "Membership Card Design",
+                description: "Professional and secure membership or loyalty card designs to enhance customer retention programs.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Product Design (Graphic)
+            {
+                id: 17,
+                name: "Product Design",
+                description: "Conceptual graphic design for products, including mockups and visualizations for marketing or prototyping.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+
+            // Sticker/Product Label Design
+            {
+                id: 18,
+                name: "Sticker/Product Label Design",
+                description: "Custom sticker and product label designs that are vibrant, durable, and compliant with necessary regulations.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 200 },
+                    { name: "Premium", price: 400 },
+                    { name: "Pro", price: 600 }
+                ]
+            },
+
+            // Vehicle Magnet Branding
+            {
+                id: 19,
+                name: "Vehicle Magnet Branding",
+                description: "Dynamic and durable vehicle magnet designs to turn your fleet into a moving advertisement.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+
+            // Event Ticket Design
+            {
+                id: 20,
+                name: "Event Ticket Design",
+                description: "Custom event ticket designs with security features and branding for concerts, shows, and entry passes.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 100 },
+                    { name: "Premium", price: 200 },
+                    { name: "Pro", price: 300 }
+                ]
+            },
+
+            // Billboard Design
+            {
+                id: 21,
+                name: "Billboard Design",
+                description: "Large-scale, high-impact billboard designs created for maximum visibility and message clarity from a distance.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 600 },
+                    { name: "Premium", price: 1200 },
+                    { name: "Pro", price: 1800 }
+                ]
+            },
+
+            // Brand Identity Pack
+            {
+                id: 22,
+                name: "Brand Identity Pack",
+                description: "A comprehensive suite of branding materials including logo, color palette, typography, and brand guidelines.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 800 },
+                    { name: "Premium", price: 1600 },
+                    { name: "Pro", price: 2400 }
+                ]
+            },
+
+            // T-Shirt Design
+            {
+                id: 23,
+                name: "T-Shirt Design",
+                description: "Creative and wearable art designs for t-shirts, perfect for merchandising, events, or team uniforms.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 300 },
+                    { name: "Premium", price: 600 },
+                    { name: "Pro", price: 900 }
+                ]
+            },
+
+            // Event Backdrop Design
+            {
+                id: 24,
+                name: "Event Backdrop Design",
+                description: "Stunning backdrop designs for stages, photo opportunities, and exhibitions at corporate events and weddings.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 400 },
+                    { name: "Premium", price: 800 },
+                    { name: "Pro", price: 1200 }
+                ]
+            },
+            // Certificate Design
+            {
+                id: 25,
+                name: "Certificate Design",
+                description: "Elegant and formal certificate design for awards, achievements, and recognition, with customizable text fields.",
+                hasPages: true,
+                packages: [
+                    { name: "Standard", price: 200, includedPages: 1, pagePrice: 30, maxPages: 100 }
+                ]
+            },
+
+            // Door/Window Vinyl Branding
+            {
+                id: 26,
+                name: "Door/Window Vinyl Branding",
+                description: "Custom vinyl decal designs for glass doors and windows to promote your brand with style and clarity.",
+                hasPages: false,
+                packages: [
+                    { name: "Starter", price: 400 },
+                    { name: "Premium", price: 800 },
+                    { name: "Pro", price: 1200 }
+                ]
+            },
+
+            // Presentation Slide Design
+           {
+                id: 27,
+                name: "Presentation Slide",
+                description: "Professional and cohesive slide deck design to make your presentations visually compelling and effective.",
+                hasPages: true,
+                packages: [
+                    { name: "Standard", price: 200, includedPages: 1, pagePrice: 200, maxPages: 10 }
+                ]
+            },
+
+            // Menu Board Slide Design
+             {
+                id: 28,
+                name: "Menu Board Slide Design",
+                description: "Digital menu board designs for restaurants and cafes, optimized for high-resolution displays and easy updates.",
+                hasPages: true,
+                packages: [
+                    { name: "Standard", price: 400, includedPages: 1, pagePrice: 400, maxPages: 10 }
+                ]
+            },
+                {
+                    id: 29,
+                    name: "Company Profile Design",
+                    description: "Comprehensive and professional company profile document design to impress investors and clients. Up to 5 pages",
+                    hasPages: false,
+                    packages: [
+                        { name: "Starter", price: 700 },
+                        { name: "Premium", price: 1400 },
+                        { name: "Pro", price: 2100 }
+                    ]
+                        },
+                {
+                id: 30,
+                name: "website Design",
+                description: "We create modern, responsive websites designed to visually impress your audience and deeply engage them with your brand.",
+                hasPages: true,
+                packages: [
+                    { name: "Starter", price: 900, includedPages: 1, pagePrice: 900, maxPages: 5 }
+                ]
+            },
+                {
+                id: 31,
+                name: "website Design",
+                description: "Our custom sites are strategically designed to effectively generate qualified leads and directly drive your product or service sales.",
+                hasPages: true,
+                packages: [
+                    { name: "Premium", price: 1800, includedPages: 1, pagePrice: 1800, maxPages: 5 }
+                ]
+            },
+                {
+                id: 32,
+                name: "website Design",
+                description: "Our custom sites are strategically designed to effectively generate qualified leads and directly drive your product or service sales.",
+                hasPages: true,
+                packages: [
+                    { name: "Premium", price: 1800, includedPages: 1, pagePrice: 1800, maxPages: 5 }
+                ]
+            },
+                {
+                id: 33,
+                name: "website Design",
+                description: "We build fast, SEO-optimized websites that rank well and are engineered to convert casual visitors into loyal customers.",
+                hasPages: true,
+                packages: [
+                    { name: "Pro", price: 2700, includedPages: 1, pagePrice: 2700, maxPages: 5 }
+                ]
+            }, {
+                    id: 34,
+                    name: "User System Essentials",
+                    description: "A secure user login system with integrated forms and database architecture to manage and protect customer data and interactions.",
+                    hasPages: false,
+                    packages: [
+                        { name: "Enterprice Form", price: 600 },
+                        { name: "Advanced Login", price: 1200 },
+                        { name: "Enterprice DB", price: 1500 }
+                    ]
+                        }
+        ];
+
+        // Customer discount data (simulated database)
+        const customerDiscounts = {
+           // "A1B2C3": 10,
+           // "ZXCVBN": 25
+        };
+
+        // Global state
+        let selectedServices = [];
+        let currentStep = 1;
+        let customerDiscount = 0;
+        let customerId = "";
+        let totalAmount = 0;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            renderServices();
+            setupEventListeners();
+        });
+
+        // Render services to the page
+        function renderServices() {
+            const serviceList = document.getElementById('service-list');
+            serviceList.innerHTML = '';
+            
+            services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                
+                serviceCard.innerHTML = `
+                    <div class="service-title">
+                        <label>
+                            <input type="checkbox" class="service-checkbox" id="service-${service.id}-checkbox">
+                            ${service.name}
+                        </label>
+                    </div>
+                    <div class="service-description">${service.description}</div>
+                    <div class="service-options">
+                        ${service.packages.map(pkg => `
+                            <div class="service-option">
+                                <input type="radio" name="service-${service.id}" 
+                                    id="service-${service.id}-${pkg.name.toLowerCase()}" 
+                                    value="${pkg.name}" 
+                                    data-price="${pkg.price}"
+                                    ${pkg.includedPages ? `data-included-page="${pkg.includedPages}"` : ''}
+                                    ${pkg.pagePrice ? `data-page-price="${pkg.pagePrice}"` : ''}
+                                    ${pkg.maxPages ? `data-max-pages="${pkg.maxPages}"` : ''}
+                                    disabled>
+                                <label for="service-${service.id}-${pkg.name.toLowerCase()}">
+                                    ${pkg.name} - R${pkg.price.toLocaleString()}
+                                    ${pkg.includedPages ? ` (includes ${pkg.includedPages} page)` : ''}
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${!service.hasPages ? `
+                        <div class="service-quantity">
+                            <label for="quantity-${service.id}">Quantity:</label>
+                            <input type="number" id="quantity-${service.id}" class="quantity-input" min="1" value="1" disabled>
+                        </div>
+                    ` : ''}
+                    ${service.hasPages ? `
+                        <div class="pages-input-container" style="display: none;">
+                            <label for="pages-${service.id}">Total Pages:</label>
+                            <input type="number" id="pages-${service.id}" class="pages-input" min="1" value="1" disabled>
+                            <span class="pages-info"></span>
+                        </div>
+                    ` : ''}
+                `;
+                
+                const checkbox = serviceCard.querySelector('.service-checkbox');
+                const radioInputs = serviceCard.querySelectorAll('input[type="radio"]');
+                const quantityInput = serviceCard.querySelector('.quantity-input');
+                const pagesInputContainer = serviceCard.querySelector('.pages-input-container');
+                const pagesInput = serviceCard.querySelector('.pages-input');
+                const pagesInfo = serviceCard.querySelector('.pages-info');
+                
+                checkbox.addEventListener('change', function() {
+                    const isChecked = this.checked;
+                    radioInputs.forEach(input => {
+                        input.disabled = !isChecked;
+                        if (isChecked && !input.checked && input.value === 'Starter') {
+                            input.checked = true;
+                            updatePagesInfo(input, pagesInfo, pagesInput);
+                        }
+                    });
+                    
+                    if (quantityInput) quantityInput.disabled = !isChecked;
+                    
+                    if (pagesInputContainer) {
+                        pagesInputContainer.style.display = isChecked ? 'flex' : 'none';
+                        if (isChecked) {
+                            const selectedRadio = serviceCard.querySelector('input[type="radio"]:checked');
+                            if (selectedRadio) {
+                                updatePagesInfo(selectedRadio, pagesInfo, pagesInput);
+                            }
+                        } else {
+                            pagesInput.value = 1;
+                        }
+                    }
+                    
+                    updateTotalAmount();
+                });
+                
+                radioInputs.forEach(input => {
+                    input.addEventListener('change', function() {
+                        updatePagesInfo(this, pagesInfo, pagesInput);
+                        updateTotalAmount();
+                    });
+                });
+                
+                if (quantityInput) {
+                    quantityInput.addEventListener('input', updateTotalAmount);
+                }
+                
+                if (pagesInput) {
+                    pagesInput.addEventListener('input', function() {
+                        const selectedRadio = serviceCard.querySelector('input[type="radio"]:checked');
+                        if (selectedRadio) {
+                            const maxPages = parseInt(selectedRadio.getAttribute('data-max-pages')) || 0;
+                            if (maxPages > 0 && parseInt(this.value) > maxPages) {
+                                this.value = maxPages;
+                            }
+                            if (parseInt(this.value) < 1) {
+                                this.value = 1;
+                            }
+                        }
+                        updateTotalAmount();
+                    });
+                }
+                
+                serviceList.appendChild(serviceCard);
+            });
+        }
+
+        // Update pages info based on selected package
+        function updatePagesInfo(radioElement, pagesInfo, pagesInput) {
+            const includedPages = parseInt(radioElement.getAttribute('data-included-pages')) || 0;
+            const pagePrice = parseInt(radioElement.getAttribute('data-page-price')) || 0;
+            const maxPages = parseInt(radioElement.getAttribute('data-max-pages')) || 0;
+            
+            if (pagesInfo) {
+                pagesInfo.textContent = `(Includes ${includedPages} pages, R${pagePrice} per additional page${maxPages > 0 ? `, Max: ${maxPages}` : ''})`;
+            }
+            
+            if (pagesInput) {
+                pagesInput.disabled = false;
+                pagesInput.setAttribute('max', maxPages);
+                pagesInput.value = 1;
+            }
+        }
+
+        function setupEventListeners() {
+            // Step navigation
+            document.getElementById('step-1-next').addEventListener('click', goToStep2);
+            document.getElementById('step-2-back').addEventListener('click', () => changeStep(1));
+            document.getElementById('step-2-next').addEventListener('click', goToStep3);
+            document.getElementById('step-3-back').addEventListener('click', () => changeStep(2));
+            document.getElementById('step-3-next').addEventListener('click', goToStep4);
+            document.getElementById('step-4-back').addEventListener('click', () => changeStep(3));
+            
+            // Customer ID validation
+            document.getElementById('customer-id').addEventListener('input', validateCustomerId);
+            
+            // Print and download
+            document.getElementById('print-button').addEventListener('click', function() {
+                
+                generateQuotationPreview();
+                
+                // Show the preview and wait a moment before printing
+                document.getElementById('quotation-preview').style.display = 'block';
+                
+                setTimeout(function() {
+                    window.print();
+                }, 100);
+            });
+            
+            document.getElementById('download-pdf').addEventListener('click', function() {
+                alert('PDF download functionality would be implemented here with a library like jsPDF.');
+            });
+        }
+
+        // Update total amount and show in popup
+        function updateTotalAmount() {
+            let total = 0;
+
+            services.forEach(service => {
+                const checkbox = document.getElementById(`service-${service.id}-checkbox`);
+                if (checkbox && checkbox.checked) {
+                    const selectedPackage = document.querySelector(`input[name="service-${service.id}"]:checked`);
+                    
+                    if (selectedPackage) {
+                        const price = Number(selectedPackage.getAttribute('data-price'));
+                        let quantity = 1;
+                        
+                        // Get quantity for services without pages
+                        if (!service.hasPages) {
+                            const quantityInput = document.getElementById(`quantity-${service.id}`);
+                            quantity = parseInt(quantityInput.value) || 1;
+                        }
+                        
+                        let serviceTotal = price * quantity;
+                        
+                        // Additional page costs for services with pages
+                        if (service.hasPages) {
+                            const includedPages = parseInt(selectedPackage.getAttribute('data-included-pages')) || 0;
+                            const pagePrice = parseInt(selectedPackage.getAttribute('data-page-price')) || 0;
+                            const pagesInput = document.getElementById(`pages-${service.id}`);
+                            const totalPages = parseInt(pagesInput.value) || 1;
+                            
+                            // Calculate additional pages beyond the first page
+                            const additionalPages = Math.max(0, totalPages - 1);
+                            serviceTotal += additionalPages * pagePrice * quantity;
+                        }
+                        
+                        total += serviceTotal;
+                    }
+                }
+            });
+
+            totalAmount = total;
+
+            const popup = document.getElementById('total-popup');
+            popup.textContent = `Total: R${total.toLocaleString()}`;
+            popup.classList.add('visible');
+            setTimeout(() => popup.classList.remove('visible'), 3000);
+        }
+
+        // Validate step 1 and proceed to step 2
+        function goToStep2() {
+            selectedServices = [];
+            let hasSelection = false;
+
+            services.forEach(service => {
+                const checkbox = document.getElementById(`service-${service.id}-checkbox`);
+                if (checkbox && checkbox.checked) {
+                    const selectedPackage = document.querySelector(`input[name="service-${service.id}"]:checked`);
+                    
+                    if (selectedPackage) {
+                        hasSelection = true;
+                        const price = Number(selectedPackage.getAttribute('data-price'));
+                        let quantity = 1;
+                        let pages = null;
+                        let total = price;
+                        
+                        // Get quantity for services without pages
+                        if (!service.hasPages) {
+                            const quantityInput = document.getElementById(`quantity-${service.id}`);
+                            quantity = parseInt(quantityInput.value) || 1;
+                            total = price * quantity;
+                        } else {
+                            // Get total pages for services with pages
+                            const includedPages = parseInt(selectedPackage.getAttribute('data-included-pages')) || 0;
+                            const pagePrice = parseInt(selectedPackage.getAttribute('data-page-price')) || 0;
+                            const pagesInput = document.getElementById(`pages-${service.id}`);
+                            const totalPages = parseInt(pagesInput.value) || 1;
+                            
+                            // Calculate additional pages beyond the first page
+                            const additionalPages = Math.max(0, totalPages - 1);
+                            total += additionalPages * pagePrice;
+                            pages = totalPages;
+                        }
+                        
+                        selectedServices.push({
+                            id: service.id,
+                            name: service.name,
+                            package: selectedPackage.value,
+                            quantity: quantity,
+                            price: price,
+                            pages: pages,
+                            total: total
+                        });
+                    }
+                }
+            });
+
+            if (!hasSelection) {
+                alert('Please select at least one service to continue.');
+                return;
+            }
+
+            changeStep(2);
+        }
+
+        // Validate step 2 and proceed to step 3
+        function goToStep3() {
+            // Validate required fields
+            const requiredFields = ['full-name', 'phone', 'email', 'address', 'zip-code'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#d13438';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            updateOrderSummary();
+            changeStep(3);
+        }
+
+        // Validate step 3 and proceed to step 4
+        function goToStep4() {
+            generateQuotationPreview();
+            changeStep(4);
+        }
+
+        // Change current step
+        function changeStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step-${step}`).classList.add('active');
+            
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((el, index) => {
+                el.classList.remove('active', 'completed');
+                if (index + 1 === step) {
+                    el.classList.add('active');
+                } else if (index + 1 < step) {
+                    el.classList.add('completed');
+                }
+            });
+            
+            currentStep = step;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Validate customer ID and apply discount
+        function validateCustomerId() {
+            const customerIdInput = document.getElementById('customer-id');
+            const discountInfo = document.getElementById('discount-info');
+            const errorElement = document.getElementById('customer-id-error');
+            customerId = customerIdInput.value.trim().toUpperCase();
+            
+            // Reset error
+            errorElement.style.display = 'none';
+            customerIdInput.style.borderColor = '';
+            
+            if (customerId) {
+                if (customerId.length === 6) {
+                    if (customerDiscounts.hasOwnProperty(customerId)) {
+                        customerDiscount = customerDiscounts[customerId];
+                        discountInfo.innerHTML = `Customer ID <strong>96-${customerId}</strong> validated. <strong>${customerDiscount}% discount</strong> applied to your order.`;
+                        discountInfo.style.color = 'green';
+                    } else {
+                        customerDiscount = 0;
+                        discountInfo.innerHTML = `Customer ID <strong>96-${customerId}</strong> not found in our system. No discount will be applied.`;
+                        discountInfo.style.color = 'orange';
+                    }
+                } else {
+                    customerDiscount = 0;
+                    errorElement.textContent = 'Customer ID must be exactly 6 characters.';
+                    errorElement.style.display = 'block';
+                    customerIdInput.style.borderColor = '#d13438';
+                    discountInfo.innerHTML = 'Invalid Customer ID format. No discount will be applied.';
+                    discountInfo.style.color = '#d13438';
+                }
+            } else {
+                customerDiscount = 0;
+                discountInfo.innerHTML = 'No discount applied yet. Enter your customer ID to see applicable discounts.';
+                discountInfo.style.color = '';
+            }
+            
+            updateOrderSummary();
+        }
+
+        // Update the order summary table
+        function updateOrderSummary() {
+            const orderSummary = document.getElementById('order-summary');
+            orderSummary.innerHTML = '';
+
+            let subtotal = 0;
+
+            selectedServices.forEach(service => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${service.name}</td>
+                    <td>${service.package}</td>
+                    <td>${service.quantity}</td>
+                    <td>${service.pages ? service.pages : 'N/A'}</td>
+                    <td class="ms-text-right">R${service.total.toLocaleString()}</td>
+                `;
+                orderSummary.appendChild(row);
+                subtotal += service.total;
+            });
+
+            const discountAmount = subtotal * (customerDiscount / 100);
+            const total = subtotal - discountAmount;
+
+            document.getElementById('subtotal').textContent = `R${subtotal.toLocaleString()}`;
+            document.getElementById('discount-amount').textContent = `-R${discountAmount.toLocaleString()}`;
+            document.getElementById('total-amount').textContent = `R${total.toLocaleString()}`;
+        }
+
+        // Generate the quotation preview
+        function generateQuotationPreview() {
+            const preview = document.getElementById('quotation-preview');
+            const companyName = document.getElementById('company-name').value;
+            const fullName = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const zipCode = document.getElementById('zip-code').value;
+            
+            let subtotal = 0;
+            selectedServices.forEach(service => subtotal += service.total);
+            const discountAmount = subtotal * (customerDiscount / 100);
+            const total = subtotal - discountAmount;
+            
+            // Generate a random quotation number
+            const quoteNumber = 'QT-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            
+            // Set current date and valid until date
+            const currentDate = new Date();
+            const validUntil = new Date();
+            validUntil.setDate(currentDate.getDate() + 30);
+            
+            const formattedDate = currentDate.toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+            
+            const formattedValidUntil = validUntil.toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+            
+            // Build services table rows
+            let serviceRows = '';
+            selectedServices.forEach(service => {
+                let description = `${service.name} - ${service.package}`;
+                if (service.pages) {
+                    description += ` (${service.pages} pages)`;
+                }
+                
+                serviceRows += `
+                    <tr>
+                        <td>
+                            <div><strong>${description}</strong></div>
+                        </td>
+                        <td>${service.quantity}</td>
+                        <td>R${service.price.toLocaleString()}</td>
+                        <td class="ms-text-right">R${service.total.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+            
+            preview.innerHTML = `
+                <!-- Header -->
+                <div class="ms-grid" style="align-items: center;">
+                    <div class="ms-grid-col-8">
+                        <h1 class="ms-heading ms-heading-xl">Quotation</h1>
+                        <p class="ms-text-secondary">${quoteNumber} · <span class="ms-status">Valid until ${formattedValidUntil}</span></p>
+                    </div>
+                    <div class="ms-grid-col-4 ms-text-right">
+                        <div class="ms-badge">Created: ${formattedDate}</div>
+                    </div>
+                </div>
+                
+                <div class="ms-divider"></div>
+                
+                <!-- Company and Client Information - Now Horizontal -->
+                <div class="from-billto-container" style="display: flex; justify-content: space-between; gap: 20px;">
+                    <div class="ms-info-card" style="flex: 1;">
+                        <h2 class="ms-heading ms-heading-md">Our Business Information</h2>
+                        <p><strong>96 STUDIOS</strong><br>
+                        Graphic design Services<br>
+                        462 Sebayeng, Solomondale<br>
+                        Unit d</p>
+                        <p>Phone: (+27) 81-792-5033<br>
+                        Email: Support@96studios.co.za</p>
+                    </div>
+                    
+                    <div class="ms-info-card" style="flex: 1;">
+                        <h2 class="ms-heading ms-heading-md">Customer Information</h2>
+                        <p><strong>${companyName || 'N/A'}</strong><br>
+                        Attn: ${fullName}<br>
+                        ${address}<br>
+                        ${zipCode}</p>
+                        <p>Phone: ${phone}<br>
+                        Email: ${email}</p>
+                    </div>
+                </div>
+                
+                <div class="ms-divider"></div>
+                
+                <!-- Quotation Items -->
+                <h2 class="ms-heading ms-heading-lg">Quotation Items</h2>
+                <table class="ms-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 45%">Description</th>
+                            <th style="width: 15%">Quantity</th>
+                            <th style="width: 20%">Unit Price</th>
+                            <th style="width: 20%" class="ms-text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${serviceRows}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="ms-text-right">Subtotal:</td>
+                            <td class="ms-text-right">R${subtotal.toLocaleString()}</td>
+                        </tr>
+                        ${customerDiscount > 0 ? `
+                        <tr>
+                            <td colspan="3" class="ms-text-right">Discount (${customerDiscount}%):</td>
+                            <td class="ms-text-right">-R${discountAmount.toLocaleString()}</td>
+                        </tr>
+                        ` : ''}
+                        <tr>
+                            <td colspan="3" class="ms-text-right"><strong>Total:</strong></td>
+                            <td class="ms-text-right"><strong>R${total.toLocaleString()}</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <div class="ms-alert">
+                    <h3 class="ms-heading">Notes</h3>
+                    <p>Thank you for considering our services. This quotation includes all discussed requirements and is valid for 30 days from the date of issue.</p>
+                    ${customerId ? `<p>Customer ID: 96-${customerId}</p>` : ''}
+                </div>
+                
+                <div hidden class="ms-alert">
+                    <h3 class="ms-heading">Terms & Conditions</h3>
+                    <p>100% advance payment required to begin work. Balance due upon project completion. Delivery timeline: 4-6 weeks after project initiation.</p>
+                </div>
+                
+                <!-- Footer -->
+                <div class="ms-divider"></div>
+                <div class="ms-text-secondary" style="text-align: center; font-size: 12px;">
+                    <p>96 STUDIOS | 462 Sebayeng, Solomondale, Unit d | www.96studios.co.za</p>
+                    <p>Phone: (+27) 81-792-5033 | Email: Support@96studios.co.za</p>
+                </div>
+            `;
+            
+            // Show the preview
+            preview.style.display = 'block';
+        }
+    </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordOverlay = document.getElementById('passwordOverlay');
+            const passwordInput = document.getElementById('password');
+            const requestBtn = document.getElementById('request-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            const mainContent = document.getElementById('mainContent');
+            
+            const correctPassword = "secure096";
+            
+            // Function to validate password
+            function validatePassword() {
+                if (passwordInput.value === correctPassword) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    
+                    // Hide overlay and show main content
+                    setTimeout(() => {
+                        passwordOverlay.style.display = 'none';
+                        mainContent.classList.remove('hidden');
+                    }, 1000);
+                } else {
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }
+            }
+            
+            // Function to send WhatsApp request
+            function requestPasswordViaWhatsApp() {
+                const phoneNumber = "0817925033";
+                
+                const message = "Hello! I would like to request access to the quotation.";
+                
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappUrl, '_blank');
+            }
+            
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    validatePassword();
+                }
+            });
+            
+            requestBtn.addEventListener('click', requestPasswordViaWhatsApp);
+            submitBtn.addEventListener('click', validatePassword);
+        });
+    </script>
+</body>
+</html>
